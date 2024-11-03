@@ -25,7 +25,7 @@ COPY --from=build --chown=node:node /usr/src/app/dist ./dist
 
 # dont think I need these. I expose in compose
 # allows it to be accessed from outside the container??? needed it to work but check docks for reason TODO
-# ENV HOST=0.0.0.0
+ENV HOST=0.0.0.0
 # ENV PORT=4321
 # EXPOSE 4321
 # ---------------------------------------- from vscode example

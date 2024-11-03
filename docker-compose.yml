@@ -13,25 +13,25 @@ services:
       - cert_cert
     environment:
       - NODE_ENV=production
-      # - SERVER_KEY_PATH=/run/secrets/cert_key
-      # - SERVER_CERT_PATH=/run/secrets/cert_cert
+      - SERVER_KEY_PATH=/run/secrets/cert_key
+      - SERVER_CERT_PATH=/run/secrets/cert_cert
     command: ["node", "./dist/server/entry.mjs"]
     # command: ["sh", "-c", "SERVER_KEY_PATH=/run/secrets/cert_key SERVER_CERT_PATH=/run/secrets/cert_cert node ./dist/server/entry.mjs"]
       
     # port mapping (HOST:CONTAINER) TODO: for server env, no host mapping, just expose container port for Caddy
-    # ports:
-    #   - 4321:4321
-    expose:  #use instead of ports when in server env example
-      - 4321
-    networks:
-      - caddy_network
+    ports:
+      - 4321:4321
+    # expose:  #use instead of ports when in server env example
+      # - 4321
+    # networks:
+      # - caddy_network
 
 # the network has to be mannually created via cli if multiple sevices will use it but have their own docker compose files
 # docker network create caddy_network 
-networks:
-  caddy_network:
-    external: true
-    driver: bridge
+# networks:
+  # caddy_network:
+    # external: true
+    # driver: bridge
 
 secrets:
   cert_key:
