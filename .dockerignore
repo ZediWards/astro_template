@@ -1,0 +1,45 @@
+# Notes for docker docs (https://docs.docker.com/build/concepts/context/#dockerignore-files)
+
+#  Docker also supports a special wildcard string ** that matches any number of directories (including zero)
+# **/*.go excludes all files that end with .go found anywhere in the build context.
+
+# You can use the .dockerignore file to exclude the Dockerfile and .dockerignore files.
+# These files are still sent to the builder as they're needed for running the build.
+# But you can't copy the files into the image using ADD, COPY, or bind mounts.
+
+# You can prepend lines with a ! (exclamation mark) to make exceptions to exclusions. (order matters)
+# i.e
+# *.md
+# !README*.md
+# README-secret.md
+# No markdown files are included in the context except README files other than README-secret.md.
+
+# ---------------------------------------------------------------------------
+# added by me
+**/private
+**/*.pem
+# ---------------------------------------------------------------------------
+**/.classpath
+**/.dockerignore
+**/.env
+**/.git
+**/.gitignore
+**/.project
+**/.settings
+**/.toolstarget
+**/.vs
+**/.vscode
+**/*.*proj.user
+**/*.dbmdl
+**/*.jfm
+**/charts
+**/docker-compose*
+**/compose*
+**/Dockerfile*
+**/node_modules
+**/npm-debug.log
+**/obj
+**/secrets.dev.yaml
+**/values.dev.yaml
+LICENSE
+README.md
