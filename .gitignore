@@ -1,7 +1,8 @@
 # added by me
 private/
 *.pem
-
+trash.sql
+# --------------------------------
 # build output
 dist/
 # generated types
